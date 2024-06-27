@@ -1,4 +1,4 @@
-import sys
+import random
 
 WIDTH, HEIGHT = 8, 8
 
@@ -6,7 +6,7 @@ WIDTH, HEIGHT = 8, 8
 def newBoard():
     board = []
     for i in range(WIDTH):
-        board.append(['', '', '', '', '', '', '', ''])
+        board.append([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
     return board
 
 
@@ -22,13 +22,19 @@ def pictureBoard(board):
     print('  12345678')
 
 
-def play():
-#    board = newBoard()
+def play(playerFishka, computerFishka):
+    board = newBoard()
     board[3][3] = 'X'
     board[3][4] = 'O'
     board[4][3] = 'O'
     board[4][4] = 'X'
+    pictureBoard(board)
+    print()
 
+    if random.randint(0, 1) == 0:
+        print('Компьютер ходит первым')
+    else:
+        print('Человек ходит первым')
 
 def inputFishka():
     Fishka = ''
@@ -45,9 +51,6 @@ print('Это игра Реверси')
 
 playerFishka, computerFishka = inputFishka()
 
+play(playerFishka, computerFishka)
 
-board = newBoard()
 
-play()
-
-pictureBoard(board)
