@@ -24,6 +24,7 @@ def pictureBoard(board):
 
 def play(playerFishka, computerFishka):
     board = newBoard()
+    turn = ''
     board[3][3] = 'X'
     board[3][4] = 'O'
     board[4][3] = 'O'
@@ -32,9 +33,17 @@ def play(playerFishka, computerFishka):
     print()
 
     if random.randint(0, 1) == 0:
+        turn = 'Компьютер'
         print('Компьютер ходит первым')
     else:
+        turn = 'Человек'
         print('Человек ходит первым')
+
+    if turn == 'Человек':
+        print('test human')
+    else:
+        print('test computer')
+
 
 def inputFishka():
     Fishka = ''
