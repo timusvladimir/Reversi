@@ -45,6 +45,7 @@ print('Это игра Реверси')
 
 playerFishka, computerFishka = inputFishka()
 
+
 board = newBoard()
 
 play()
