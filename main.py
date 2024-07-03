@@ -45,6 +45,12 @@ def play(playerFishka, computerFishka):
         print('test computer')
 
 
+def ValidXod(board, x, y):
+    # Проверка (возвращает False), если ход игрока в клетку c координатами x, y - недопустимый.)
+    # True е
+
+
+
 def inputFishka():
     Fishka = ''
     print('Вы играете за X или O ?')
@@ -59,7 +65,6 @@ def inputFishka():
 print('Это игра Реверси')
 
 playerFishka, computerFishka = inputFishka()
-
 play(playerFishka, computerFishka)
 
 
