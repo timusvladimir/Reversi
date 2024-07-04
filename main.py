@@ -45,18 +45,24 @@ def play(playerFishka, computerFishka):
         print('test computer')
 
 
-def ValidXod(board, x, y):
+def ValidXod(board, fishka, x, y):
     # Проверка (возвращает False), если ход игрока в клетку c координатами x, y - недопустимый.)
-    # True е
+    # True если это допустимый ход, вернётся список клеток которые стали бы принадлежать игроку, если бы он сделал ход
+    if board[x][y] != ' ':
+        return False
 
+    if fishka == 'X':
+        overfishka = 'O'
+    else:
+        overfishka = 'X'
 
 
 def inputFishka():
-    Fishka = ''
+    fishka = ''
     print('Вы играете за X или O ?')
-    Fishka = input().upper()
+    fishka = input().upper()
 
-    if Fishka == 'X':
+    if fishka == 'X':
         return ['X', 'O']
     else:
         return ['O', 'x']
