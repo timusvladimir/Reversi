@@ -63,7 +63,7 @@ def ValidXod(board, fishka, xstart, ystart):
 
         fiskatoflip = []
 
-    for xdirection, ydirection in [[0,1],[1,1]]:
+    for xdirection, ydirection in [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]]:
         x, y = xstart, ystart
         x += xdirection
         y += ydirection
