@@ -44,6 +44,9 @@ def play(playerFishka, computerFishka):
     else:
         print('test computer')
 
+    playerValidMoves = getValidMoves(board, playerFishka)
+
+
 def isonboard(x,y):
     # вернуть True если координаты есть на игровом поле
     if x >= 0 and x <= WIDTH - 1 and y >= 0 and y <= HEIGHT - 1:
@@ -53,7 +56,7 @@ def isonboard(x,y):
 def ValidXod(board, fishka, xstart, ystart):
     # Проверка (возвращает False), если ход игрока в клетку c координатами x, y - недопустимый.)
     # True если это допустимый ход, вернётся список клеток которые стали бы принадлежать игроку, если бы он сделал ход
-    if board[x][y] != ' ' or not isonboard(xstart, ystart):
+    if board[xstart][ystart] != ' ' or not isonboard(xstart, ystart):
         return False
 
     if fishka == 'X':
@@ -84,6 +87,16 @@ def ValidXod(board, fishka, xstart, ystart):
     return fiskatoflip
 
 
+def getValidMoves(board, fishka):
+    # Функция возвращает список списков с координатами x и y допустимых ходов для данного игрока на передаваемом игровом поле
+    validMoves = []
+    for x in range(WIDTH):
+        for y in range(HEIGHT):
+            if ValidXod(board, fishka, x, y) != False:
+                validMoves.append([x], [y])
+    return validMoves
+
+
 def inputFishka():
     fishka = ''
     print('Вы играете за X или O ?')
@@ -98,6 +111,7 @@ def inputFishka():
 print('Это игра Реверси')
 
 playerFishka, computerFishka = inputFishka()
-play(playerFishka, computerFishka)
+
+finalBoard = play(playerFishka, computerFishka)
 
 
