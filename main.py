@@ -44,17 +44,44 @@ def play(playerFishka, computerFishka):
     else:
         print('test computer')
 
+def isonboard(x,y):
+    # вернуть True если координаты есть на игровом поле
+    if x >= 0 and x <= WIDTH - 1 and y >= 0 and y <= HEIGHT - 1:
+        return True
 
-def ValidXod(board, fishka, x, y):
+
+def ValidXod(board, fishka, xstart, ystart):
     # Проверка (возвращает False), если ход игрока в клетку c координатами x, y - недопустимый.)
     # True если это допустимый ход, вернётся список клеток которые стали бы принадлежать игроку, если бы он сделал ход
-    if board[x][y] != ' ':
+    if board[x][y] != ' ' or not isonboard(xstart, ystart):
         return False
 
     if fishka == 'X':
         overfishka = 'O'
     else:
         overfishka = 'X'
+
+        fiskatoflip = []
+
+    for xdirection, ydirection in [[0,1],[1,1]]:
+        x, y = xstart, ystart
+        x += xdirection
+        y += ydirection
+        while isonboard(x, y) and board[x][y] == overfishka:
+            # Продолжаем двигаться в направлении x, y
+            x += xdirection
+            y += ydirection
+            if isonboard(x, y) and board[x][y] == fishka:
+                while True:
+                    x -= xdirection
+                    y -= ydirection
+                    if x == xstart and y == ystart:
+                        break
+                    fiskatoflip.append([x, y])
+
+    if len(fiskatoflip) == 0:
+        return False
+    return fiskatoflip
 
 
 def inputFishka():
